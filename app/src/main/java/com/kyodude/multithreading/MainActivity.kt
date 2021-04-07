@@ -22,4 +22,9 @@ class MainActivity : AppCompatActivity() {
 
         myTask.execute("Runnnning")
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        myTask.cancel(true)
+    }
 }

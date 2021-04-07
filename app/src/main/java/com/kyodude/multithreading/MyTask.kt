@@ -6,15 +6,15 @@ import java.lang.ref.WeakReference
 
 class MyTask(textView: TextView) : AsyncTask<String, Void, String>() {
 
-    var tvMain: WeakReference<TextView>;
+    var tvMainReference: WeakReference<TextView>;
 
     init {
-        tvMain = WeakReference(textView)
+        tvMainReference = WeakReference(textView)
     }
 
     override fun onPreExecute() {
         super.onPreExecute()
-        tvMain.get()?.setText("Starting AsyncTask")
+        tvMainReference.get()?.setText("Starting AsyncTask")
     }
 
     override fun doInBackground(vararg p0: String?): String {
@@ -28,6 +28,6 @@ class MyTask(textView: TextView) : AsyncTask<String, Void, String>() {
 
     override fun onPostExecute(result: String?) {
         super.onPostExecute(result)
-        tvMain.get()?.setText(result)
+        tvMainReference.get()?.setText(result)
     }
 }
